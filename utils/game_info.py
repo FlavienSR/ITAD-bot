@@ -1,11 +1,11 @@
-import requests
 import os
+import requests
 
 from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY = os.getenv("API_KEY") 
+API_KEY = os.getenv("API_KEY")
 
 def game_id(name):
     req = requests.get("https://api.isthereanydeal.com/games/lookup/v1", params={"key": API_KEY, "title": name})
