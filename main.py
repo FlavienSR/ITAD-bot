@@ -17,14 +17,8 @@ bot = commands.Bot(command_prefix="onpeutpasenleverctemerde?",intents=intents,he
 @bot.event
 async def on_ready():
     print(f"{bot.user} est prêt.")
-    try:
-        guilds_ids = [1098342509324800000, 1288930612048166962]
-        for guild_id in guilds_ids:
-            guild = discord.Object(id=guild_id)
-            synced = await bot.tree.sync(guild=guild)
-            print(f"{len(synced)} commandes slash sync pour le serveur {guild.id}")
-    except Exception as e:
-        print(f"Erreur de sync : {e}")
+    await bot.tree.sync()
+    print(f"Commandes syncronisées !")
 
 async def load_cogs():
     await bot.load_extension('cogs.info')
